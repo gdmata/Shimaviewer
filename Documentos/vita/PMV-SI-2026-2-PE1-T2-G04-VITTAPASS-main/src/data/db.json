@@ -1,0 +1,765 @@
+{
+    "metadados": {
+    "schemaVersion": "1.0.0",
+    "descricao": "Base fictícia do protótipo VittaPass",
+    "geradoEm": "2026-10-09T14:00:00Z"
+},
+"usuarios": [
+    {
+    "id": "usr_cliente_001",
+    "nome": "Marina Alves",
+    "documentoTipo": "cpf",
+    "documentoNumero": "00000000000",
+    "email": "marina.alves@example.com",
+    "telefone": "+5531999990001",
+    "papeis": [
+        "cliente"
+    ],
+    "status": "ativo",
+    "emailVerificado": true,
+    "perfil": {
+        "descricao": "Cliente fictícia do protótipo VittaPass.",
+        "avatarUrl": null,
+        "cidade": "Belo Horizonte",
+        "uf": "MG"
+    },
+    "criadoEm": "2026-09-01T13:00:00Z",
+    "atualizadoEm": "2026-10-01T13:00:00Z",
+    "excluidoEm": null
+    },
+    {
+    "id": "usr_gestor_001",
+    "nome": "Rafael Oliveira",
+    "documentoTipo": "cpf",
+    "documentoNumero": "00000000001",
+    "email": "rafael.oliveira@example.com",
+    "telefone": "+5531999990002",
+    "papeis": [
+        "gestor_parceiro"
+    ],
+    "status": "ativo",
+    "emailVerificado": true,
+    "perfil": {
+        "descricao": "Gestor fictício de estabelecimento parceiro.",
+        "avatarUrl": null,
+        "cidade": "Belo Horizonte",
+        "uf": "MG"
+    },
+    "criadoEm": "2026-08-01T13:00:00Z",
+    "atualizadoEm": "2026-10-01T13:00:00Z",
+    "excluidoEm": null
+    },
+    {
+    "id": "usr_admin_001",
+    "nome": "Administrador VittaPass",
+    "documentoTipo": "cpf",
+    "documentoNumero": "00000000002",
+    "email": "admin@example.com",
+    "telefone": "+5531999990003",
+    "papeis": [
+        "administrador"
+    ],
+    "status": "ativo",
+    "emailVerificado": true,
+    "perfil": {
+        "descricao": "Conta administrativa fictícia.",
+        "avatarUrl": null,
+        "cidade": "Belo Horizonte",
+        "uf": "MG"
+    },
+    "criadoEm": "2026-08-01T13:00:00Z",
+    "atualizadoEm": "2026-10-01T13:00:00Z",
+    "excluidoEm": null
+    }
+],
+"categorias": [
+    {
+    "id": "cat_cabelo",
+    "nome": "Cabelo",
+    "slug": "cabelo",
+    "categoriaPaiId": null,
+    "intervaloTecnicoMinimoDias": null,
+    "ativa": true
+    },
+    {
+    "id": "cat_quimica_capilar",
+    "nome": "Química capilar",
+    "slug": "quimica-capilar",
+    "categoriaPaiId": "cat_cabelo",
+    "intervaloTecnicoMinimoDias": 30,
+    "ativa": true
+    },
+    {
+    "id": "cat_unhas",
+    "nome": "Unhas",
+    "slug": "unhas",
+    "categoriaPaiId": null,
+    "intervaloTecnicoMinimoDias": null,
+    "ativa": true
+    },
+    {
+    "id": "cat_pele",
+    "nome": "Pele",
+    "slug": "pele",
+    "categoriaPaiId": null,
+    "intervaloTecnicoMinimoDias": null,
+    "ativa": true
+    }
+],
+"tiposServico": [
+    {
+    "id": "tps_corte_masculino",
+    "categoriaId": "cat_cabelo",
+    "nome": "Corte masculino",
+    "slug": "corte-masculino",
+    "custoCreditosPadrao": 2,
+    "intervaloTecnicoMinimoDias": null,
+    "ativo": true
+    },
+    {
+    "id": "tps_barba",
+    "categoriaId": "cat_cabelo",
+    "nome": "Barba",
+    "slug": "barba",
+    "custoCreditosPadrao": 2,
+    "intervaloTecnicoMinimoDias": null,
+    "ativo": true
+    },
+    {
+    "id": "tps_manicure",
+    "categoriaId": "cat_unhas",
+    "nome": "Manicure",
+    "slug": "manicure",
+    "custoCreditosPadrao": 1,
+    "intervaloTecnicoMinimoDias": null,
+    "ativo": true
+    },
+    {
+    "id": "tps_limpeza_pele",
+    "categoriaId": "cat_pele",
+    "nome": "Limpeza de pele",
+    "slug": "limpeza-de-pele",
+    "custoCreditosPadrao": 3,
+    "intervaloTecnicoMinimoDias": 30,
+    "ativo": true
+    },
+    {
+    "id": "tps_coloracao",
+    "categoriaId": "cat_quimica_capilar",
+    "nome": "Coloração",
+    "slug": "coloracao",
+    "custoCreditosPadrao": 4,
+    "intervaloTecnicoMinimoDias": 30,
+    "ativo": true
+    },
+    {
+    "id": "tps_mechas",
+    "categoriaId": "cat_quimica_capilar",
+    "nome": "Mechas",
+    "slug": "mechas",
+    "custoCreditosPadrao": 7,
+    "intervaloTecnicoMinimoDias": 75,
+    "ativo": true
+    },
+    {
+    "id": "tps_combo_corte_barba",
+    "categoriaId": "cat_cabelo",
+    "nome": "Combo corte e barba",
+    "slug": "combo-corte-e-barba",
+    "custoCreditosPadrao": 4,
+    "intervaloTecnicoMinimoDias": null,
+    "ativo": true
+    }
+],
+"estabelecimentos": [
+    {
+    "id": "est_001",
+    "gestorUsuarioId": "usr_gestor_001",
+    "nomeFantasia": "Barbearia Horizonte",
+    "pessoaTipo": "cnpj",
+    "documentoNumero": "00000000000000",
+    "categoriaPrincipal": "barbearia",
+    "descricao": "Barbearia fictícia participante do VittaPass.",
+    "nivelParceiro": 1,
+    "participaVittaPass": true,
+    "telefonePublico": "+553133330001",
+    "emailPublico": "contato@barbeariahorizonte.example",
+    "endereco": {
+        "cep": "30110000",
+        "logradouro": "Rua Exemplo",
+        "numero": "100",
+        "complemento": null,
+        "bairro": "Centro",
+        "cidade": "Belo Horizonte",
+        "uf": "MG",
+        "latitude": -19.9208,
+        "longitude": -43.9378
+    },
+    "timeZone": "America/Sao_Paulo",
+    "formasPagamento": [
+        "pix",
+        "debito",
+        "credito"
+    ],
+    "logoUrl": "../assets/estabelecimentos/est-001-logo.webp",
+    "fotosUrls": [
+        "../assets/estabelecimentos/est-001-espaco.webp"
+    ],
+    "statusAprovacao": "aprovado",
+    "notaMedia": 4.8,
+    "quantidadeAvaliacoes": 127,
+    "criadoEm": "2026-08-10T14:00:00Z",
+    "atualizadoEm": "2026-10-08T19:00:00Z",
+    "excluidoEm": null
+    }
+],
+"servicos": [
+    {
+    "id": "srv_001",
+    "estabelecimentoId": "est_001",
+    "tipoServicoId": "tps_corte_masculino",
+    "tipo": "individual",
+    "nome": "Corte masculino tradicional",
+    "descricao": "Corte com tesoura ou máquina e finalização.",
+    "duracaoMinutos": 45,
+    "precoAvulsoCentavos": 7000,
+    "custoCreditos": 2,
+    "condicoesUso": "Sujeito à disponibilidade do profissional.",
+    "itensCombo": [],
+    "status": "ativo",
+    "criadoEm": "2026-08-15T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z",
+    "excluidoEm": null
+    },
+    {
+    "id": "srv_002",
+    "estabelecimentoId": "est_001",
+    "tipoServicoId": "tps_barba",
+    "tipo": "individual",
+    "nome": "Modelagem de barba",
+    "descricao": "Modelagem de barba com toalha quente.",
+    "duracaoMinutos": 30,
+    "precoAvulsoCentavos": 5200,
+    "custoCreditos": 2,
+    "condicoesUso": "Sujeito à disponibilidade do profissional.",
+    "itensCombo": [],
+    "status": "ativo",
+    "criadoEm": "2026-08-15T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z",
+    "excluidoEm": null
+    },
+    {
+    "id": "srv_combo_001",
+    "estabelecimentoId": "est_001",
+    "tipoServicoId": "tps_combo_corte_barba",
+    "tipo": "combo",
+    "nome": "Corte e barba",
+    "descricao": "Combo com corte masculino e modelagem de barba.",
+    "duracaoMinutos": 75,
+    "precoAvulsoCentavos": 12000,
+    "custoCreditos": 4,
+    "condicoesUso": "Os dois serviços são realizados no mesmo atendimento.",
+    "itensCombo": [
+        {
+        "servicoId": "srv_001",
+        "quantidade": 1
+        },
+        {
+        "servicoId": "srv_002",
+        "quantidade": 1
+        }
+    ],
+    "status": "ativo",
+    "criadoEm": "2026-09-01T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z",
+    "excluidoEm": null
+    }
+],
+"profissionais": [
+    {
+    "id": "pro_001",
+    "estabelecimentoId": "est_001",
+    "usuarioId": null,
+    "nome": "Carlos Mendes",
+    "especialidades": [
+        "corte masculino",
+        "barba"
+    ],
+    "biografia": "Profissional fictício com experiência em cortes clássicos.",
+    "fotoUrl": "../assets/profissionais/pro-001.webp",
+    "status": "ativo",
+    "criadoEm": "2026-08-20T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z",
+    "excluidoEm": null
+    }
+],
+"profissionalServicos": [
+    {
+    "id": "prs_001",
+    "profissionalId": "pro_001",
+    "servicoId": "srv_001",
+    "ativo": true
+    },
+    {
+    "id": "prs_002",
+    "profissionalId": "pro_001",
+    "servicoId": "srv_002",
+    "ativo": true
+    },
+    {
+    "id": "prs_003",
+    "profissionalId": "pro_001",
+    "servicoId": "srv_combo_001",
+    "ativo": true
+    }
+],
+"portfolioItens": [
+    {
+    "id": "prt_001",
+    "profissionalId": "pro_001",
+    "tipoServicoId": "tps_corte_masculino",
+    "imagemUrl": "../assets/portfolio/prt-001.webp",
+    "legenda": "Corte masculino clássico.",
+    "ordemExibicao": 1,
+    "publicadoEm": "2026-09-15T14:00:00Z"
+    }
+],
+"horariosFuncionamento": [
+    {
+    "id": "hor_001",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 1,
+    "aberto": true,
+    "abreAs": "09:00",
+    "fechaAs": "18:00"
+    },
+    {
+    "id": "hor_002",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 2,
+    "aberto": true,
+    "abreAs": "09:00",
+    "fechaAs": "18:00"
+    },
+    {
+    "id": "hor_003",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 3,
+    "aberto": true,
+    "abreAs": "09:00",
+    "fechaAs": "18:00"
+    },
+    {
+    "id": "hor_004",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 4,
+    "aberto": true,
+    "abreAs": "09:00",
+    "fechaAs": "18:00"
+    },
+    {
+    "id": "hor_005",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 5,
+    "aberto": true,
+    "abreAs": "09:00",
+    "fechaAs": "18:00"
+    },
+    {
+    "id": "hor_006",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 6,
+    "aberto": true,
+    "abreAs": "09:00",
+    "fechaAs": "13:00"
+    },
+    {
+    "id": "hor_007",
+    "estabelecimentoId": "est_001",
+    "diaSemana": 7,
+    "aberto": false,
+    "abreAs": null,
+    "fechaAs": null
+    }
+],
+"disponibilidades": [
+    {
+    "id": "dsp_001",
+    "profissionalId": "pro_001",
+    "diaSemana": 4,
+    "inicio": "09:00",
+    "fim": "18:00",
+    "intervaloSlotsMinutos": 30,
+    "validoDe": "2026-10-01",
+    "validoAte": null,
+    "ativa": true
+    }
+],
+"excecoesDisponibilidade": [
+    {
+    "id": "exc_001",
+    "profissionalId": "pro_001",
+    "data": "2026-10-20",
+    "tipo": "bloqueado",
+    "inicio": null,
+    "fim": null,
+    "motivo": "Folga do profissional"
+    }
+],
+"planos": [
+    {
+    "id": "pla_basico",
+    "nome": "Básico",
+    "slug": "basico",
+    "descricao": "Para quem quer começar a cuidar da beleza com praticidade.",
+    "precoMensalCentavos": 12990,
+    "creditosMensais": 9,
+    "valorReferenciaCentavos": 31500,
+    "nivelParceiroMaximo": 1,
+    "permiteAcumulo": false,
+    "limiteAcumuloCreditos": 0,
+    "validadeAcumuloDias": 0,
+    "status": "ativo",
+    "criadoEm": "2026-09-01T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z"
+    },
+    {
+    "id": "pla_plus",
+    "nome": "Plus",
+    "slug": "plus",
+    "descricao": "Mais serviços e flexibilidade para a rotina de beleza.",
+    "precoMensalCentavos": 18990,
+    "creditosMensais": 15,
+    "valorReferenciaCentavos": 52500,
+    "nivelParceiroMaximo": 2,
+    "permiteAcumulo": false,
+    "limiteAcumuloCreditos": 0,
+    "validadeAcumuloDias": 0,
+    "status": "ativo",
+    "criadoEm": "2026-09-01T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z"
+    },
+    {
+    "id": "pla_premium",
+    "nome": "Premium",
+    "slug": "premium",
+    "descricao": "Para quem utiliza química e tratamentos estéticos com regularidade.",
+    "precoMensalCentavos": 25990,
+    "creditosMensais": 22,
+    "valorReferenciaCentavos": 77000,
+    "nivelParceiroMaximo": 3,
+    "permiteAcumulo": false,
+    "limiteAcumuloCreditos": 0,
+    "validadeAcumuloDias": 0,
+    "status": "ativo",
+    "criadoEm": "2026-09-01T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z"
+    }
+],
+"regrasPlanoServico": [
+    {
+    "id": "rps_basico_corte",
+    "planoId": "pla_basico",
+    "tipoServicoId": "tps_corte_masculino",
+    "coberto": true,
+    "intervaloPlanoDias": 20,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Novo corte disponível 20 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_basico_barba",
+    "planoId": "pla_basico",
+    "tipoServicoId": "tps_barba",
+    "coberto": true,
+    "intervaloPlanoDias": 20,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova barba disponível 20 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_basico_manicure",
+    "planoId": "pla_basico",
+    "tipoServicoId": "tps_manicure",
+    "coberto": true,
+    "intervaloPlanoDias": 10,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova manicure disponível 10 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_plus_corte",
+    "planoId": "pla_plus",
+    "tipoServicoId": "tps_corte_masculino",
+    "coberto": true,
+    "intervaloPlanoDias": 15,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Novo corte disponível 15 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_plus_barba",
+    "planoId": "pla_plus",
+    "tipoServicoId": "tps_barba",
+    "coberto": true,
+    "intervaloPlanoDias": 15,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova barba disponível 15 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_plus_manicure",
+    "planoId": "pla_plus",
+    "tipoServicoId": "tps_manicure",
+    "coberto": true,
+    "intervaloPlanoDias": 7,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova manicure disponível 7 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_plus_limpeza_pele",
+    "planoId": "pla_plus",
+    "tipoServicoId": "tps_limpeza_pele",
+    "coberto": true,
+    "intervaloPlanoDias": 45,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova limpeza de pele disponível 45 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_plus_coloracao",
+    "planoId": "pla_plus",
+    "tipoServicoId": "tps_coloracao",
+    "coberto": true,
+    "intervaloPlanoDias": 45,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova coloração disponível 45 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_premium_corte",
+    "planoId": "pla_premium",
+    "tipoServicoId": "tps_corte_masculino",
+    "coberto": true,
+    "intervaloPlanoDias": 15,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Novo corte disponível 15 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_premium_barba",
+    "planoId": "pla_premium",
+    "tipoServicoId": "tps_barba",
+    "coberto": true,
+    "intervaloPlanoDias": 15,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova barba disponível 15 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_premium_manicure",
+    "planoId": "pla_premium",
+    "tipoServicoId": "tps_manicure",
+    "coberto": true,
+    "intervaloPlanoDias": 7,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova manicure disponível 7 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_premium_limpeza_pele",
+    "planoId": "pla_premium",
+    "tipoServicoId": "tps_limpeza_pele",
+    "coberto": true,
+    "intervaloPlanoDias": 30,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova limpeza de pele disponível 30 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_premium_coloracao",
+    "planoId": "pla_premium",
+    "tipoServicoId": "tps_coloracao",
+    "coberto": true,
+    "intervaloPlanoDias": 30,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova coloração disponível 30 dias após a última utilização.",
+    "ativa": true
+    },
+    {
+    "id": "rps_premium_mechas",
+    "planoId": "pla_premium",
+    "tipoServicoId": "tps_mechas",
+    "coberto": true,
+    "intervaloPlanoDias": 75,
+    "limiteUtilizacoesCiclo": null,
+    "observacoes": "Nova sessão de mechas disponível 75 dias após a última utilização.",
+    "ativa": true
+    }
+],
+"assinaturas": [
+    {
+    "id": "asn_001",
+    "clienteUsuarioId": "usr_cliente_001",
+    "planoId": "pla_basico",
+    "status": "ativa",
+    "iniciadaEm": "2026-10-01T03:00:00Z",
+    "cicloAtualInicio": "2026-10-01T03:00:00Z",
+    "cicloAtualFim": "2026-11-01T02:59:59Z",
+    "canceladaEm": null,
+    "renovacaoAutomatica": true,
+    "precoContratadoCentavos": 12990,
+    "criadoEm": "2026-10-01T03:00:00Z",
+    "atualizadoEm": "2026-10-08T17:47:00Z"
+    }
+],
+"periodosCredito": [
+    {
+    "id": "pcr_001",
+    "assinaturaId": "asn_001",
+    "inicio": "2026-10-01T03:00:00Z",
+    "fim": "2026-11-01T02:59:59Z",
+    "creditosConcedidos": 9,
+    "creditosDebitados": 2,
+    "creditosReservados": 0,
+    "creditosDisponiveis": 7,
+    "status": "aberto",
+    "calculadoEm": "2026-10-08T19:00:00Z"
+    }
+],
+"movimentacoesCredito": [
+    {
+    "id": "mcr_000",
+    "periodoCreditoId": "pcr_001",
+    "assinaturaId": "asn_001",
+    "agendamentoId": null,
+    "tipo": "concessao",
+    "motivo": "renovacao_mensal",
+    "quantidadeCreditos": 9,
+    "saldoDisponivelApos": 9,
+    "saldoReservadoApos": 0,
+    "saldoDebitadoApos": 0,
+    "ocorridoEm": "2026-10-01T03:00:00Z",
+    "criadoPorUsuarioId": null
+    },
+    {
+    "id": "mcr_001",
+    "periodoCreditoId": "pcr_001",
+    "assinaturaId": "asn_001",
+    "agendamentoId": "agd_001",
+    "tipo": "debito",
+    "motivo": "atendimento_realizado",
+    "quantidadeCreditos": 2,
+    "saldoDisponivelApos": 7,
+    "saldoReservadoApos": 0,
+    "saldoDebitadoApos": 2,
+    "ocorridoEm": "2026-10-08T17:47:00Z",
+    "criadoPorUsuarioId": null
+    }
+],
+"agendamentos": [
+    {
+    "id": "agd_001",
+    "clienteUsuarioId": "usr_cliente_001",
+    "assinaturaId": "asn_001",
+    "periodoCreditoId": "pcr_001",
+    "estabelecimentoId": "est_001",
+    "profissionalId": "pro_001",
+    "servicoId": "srv_001",
+    "inicio": "2026-10-08T17:00:00Z",
+    "fim": "2026-10-08T17:45:00Z",
+    "status": "concluido",
+    "coberturaStatus": "coberto",
+    "creditosReservados": 0,
+    "creditosDebitados": 2,
+    "servicoSnapshot": {
+        "nome": "Corte masculino tradicional",
+        "duracaoMinutos": 45,
+        "precoAvulsoCentavos": 7000,
+        "custoCreditos": 2
+    },
+    "cancelamentoMotivo": null,
+    "canceladoEm": null,
+    "remarcadoDeId": null,
+    "criadoEm": "2026-10-02T14:00:00Z",
+    "atualizadoEm": "2026-10-08T17:47:00Z"
+    }
+],
+"checkIns": [
+    {
+    "id": "chk_001",
+    "agendamentoId": "agd_001",
+    "clienteUsuarioId": "usr_cliente_001",
+    "estabelecimentoId": "est_001",
+    "tokenHash": "mock_sha256_7ef1f4a2",
+    "status": "validado",
+    "lidoEm": "2026-10-08T16:57:00Z",
+    "validadoEm": "2026-10-08T16:57:01Z",
+    "expiraEm": "2026-10-08T17:15:00Z",
+    "motivoFalha": null
+    }
+],
+"avaliacoes": [
+    {
+    "id": "avl_001",
+    "agendamentoId": "agd_001",
+    "clienteUsuarioId": "usr_cliente_001",
+    "estabelecimentoId": "est_001",
+    "profissionalId": "pro_001",
+    "servicoId": "srv_001",
+    "notaEstabelecimento": 5,
+    "notaProfissional": 5,
+    "notaServico": 4,
+    "comentario": "Atendimento pontual e serviço bem executado.",
+    "status": "publicada",
+    "criadoEm": "2026-10-08T19:00:00Z",
+    "atualizadoEm": "2026-10-08T19:00:00Z"
+    }
+],
+"notificacoes": [
+    {
+    "id": "not_001",
+    "destinatarioUsuarioId": "usr_cliente_001",
+    "agendamentoId": "agd_001",
+    "tipo": "lembrete",
+    "titulo": "Seu atendimento está próximo",
+    "mensagem": "Seu corte está agendado para hoje às 14h.",
+    "canal": "interno",
+    "status": "enviada",
+    "agendadaPara": "2026-10-08T14:00:00Z",
+    "enviadaEm": "2026-10-08T14:00:02Z",
+    "lidaEm": "2026-10-08T14:05:00Z",
+    "criadoEm": "2026-10-02T14:00:00Z"
+    }
+],
+"campanhas": [
+    {
+    "id": "cam_001",
+    "estabelecimentoId": "est_001",
+    "titulo": "Tarde tranquila",
+    "descricao": "Desconto para preencher horários de menor movimento.",
+    "tipoIncentivo": "desconto_percentual",
+    "valorIncentivo": 10,
+    "servicosIds": [
+        "srv_001",
+        "srv_combo_001"
+    ],
+    "profissionaisIds": [],
+    "diasSemana": [
+        2,
+        3,
+        4
+    ],
+    "horaInicio": "14:00",
+    "horaFim": "16:00",
+    "inicio": "2026-10-01T03:00:00Z",
+    "fim": "2026-11-01T02:59:59Z",
+    "limiteUtilizacoes": 30,
+    "condicoes": "Válida somente para novos agendamentos nos horários indicados.",
+    "status": "ativa",
+    "criadoEm": "2026-09-25T14:00:00Z",
+    "atualizadoEm": "2026-10-01T14:00:00Z"
+    }
+]
+}

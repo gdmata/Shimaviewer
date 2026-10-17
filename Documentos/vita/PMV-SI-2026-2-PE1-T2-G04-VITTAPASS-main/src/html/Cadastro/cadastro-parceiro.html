@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>VittaPass — Cadastro de Estabelecimento</title>
+    <!-- Aponta para a folha de estilos global unificada -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+</head>
+
+<body>
+    <!-- Cabeçalho Global -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="../index.html" class="brand">VittaPass</a>
+            <button type="button" data-js-action="toggle-theme" class="btn-icon" aria-label="Alternar tema">
+                <svg id="theme-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16.8 12.5A7 7 0 0 1 7.5 3.2 7 7 0 1 0 16.8 12.5z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Corpo Principal -->
+    <main class="section">
+        <div class="container" style="max-width: 48rem;">
+
+            <div class="card card--stack">
+                <div class="section-head--center" style="margin-bottom: 1.5rem;">
+                    <h1 class="section-title section-title--sm">Cadastro de Estabelecimento</h1>
+                    <p class="section-text">Preencha as informações do seu negócio em poucas etapas.</p>
+                </div>
+
+                <form id="formEstabelecimento" action="#" method="post" class="card--stack">
+                    <!-- ═══════ ETAPA 1: Conta e Negócio ═══════ -->
+                    <div class="etapa card--stack" data-step="1">
+                        <div class="card-subtitle">Dados do Responsável e do Negócio</div>
+
+                        <div class="field">
+                            <label for="respNome" class="field__label">Nome completo</label>
+                            <input type="text" id="respNome" class="input" placeholder="Digite seu nome completo"
+                                required>
+                        </div>
+
+                        <div class="field">
+                            <label for="respCpf" class="field__label">CPF</label>
+                            <input type="text" id="respCpf" class="input" placeholder="000.000.000-00" inputmode="numeric" maxlength="14" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="respEmail" class="field__label">E-mail</label>
+                            <input type="email" id="respEmail" class="input" placeholder="voce@exemplo.com" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="respTelefone" class="field__label">Telefone</label>
+                            <input type="tel" id="respTelefone" class="input" placeholder="(00) 00000-0000" inputmode="numeric" maxlength="15" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="password" class="field__label">Senha de Acesso</label>
+                            <div class="relative-box">
+                                <input type="password" id="password" class="input" placeholder="Crie sua senha" required
+                                    style="padding-right: 3rem;">
+                                <button type="button" aria-label="Mostrar senha"
+                                    data-js-action="toggle-password-login" class="password-toggle-btn">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round">
+                                        <path d="M1 9C1 9 4 3 9 3C14 3 17 9 17 9C17 9 14 15 9 15C4 15 1 9 1 9Z" />
+                                        <circle cx="9" cy="9" r="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="fineprint">Use pelo menos 8 caracteres, com letras e números.</p>
+                        </div>
+
+                        <div class="field">
+                            <label for="razaoSocial" class="field__label">Razão Social</label>
+                            <input type="text" id="razaoSocial" class="input" placeholder="Razão social da empresa"
+                                required>
+                        </div>
+
+                        <div class="field">
+                            <label for="documento" class="field__label">CNPJ</label>
+                            <input type="text" id="documento" class="input" placeholder="00.000.000/0001-00" inputmode="numeric" maxlength="18" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="categoriaPrincipal" class="field__label">Categoria Principal</label>
+                            <select id="categoriaPrincipal" class="input" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="barbearia">Barbearia</option>
+                                <option value="salao">Salão de Beleza</option>
+                                <option value="estetica">Estética</option>
+                                <option value="spa">Spa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ── Botões ── -->
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="../Login/login-parceiro.html" id="btnVoltar" class="btn btn--outline flex-1">Voltar</a>
+                        <button type="submit" id="btnPublicar" class="btn btn--primary flex-1">Publicar Cadastro</button>
+                    </div>
+
+                    <div class="text-center-spaced">
+                        <span class="footer-label">Já é parceiro?</span>
+                        <a href="../Login/login-parceiro.html" class="link-primary footer-link">Fazer login</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../js/script.js"></script>
+    <script src="../../js/auth.js?v=2"></script>
+
+</body>
+
+</html>

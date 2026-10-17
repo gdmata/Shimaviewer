@@ -1,0 +1,101 @@
+/* O espaço abaixo do selo muda conforme a seção.
+Descendente, não filho direto: no hero o selo fica dentro da coluna. */
+.hero .eyebrow {
+    margin-bottom: 1.75rem;
+}
+
+/* --- Hero --- */
+
+.hero {
+    padding-block: 4rem;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+    color: var(--text-hero);
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+}
+
+.hero-text {
+    max-width: 480px;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    line-height: 1.625;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* Card com formulário (hero): espaçamento entre os blocos do formulário */
+.card--form>.card-text,
+.card--form>.btn--outline-soft {
+    margin-bottom: 1.75rem;
+}
+
+/* --- Bloco de texto + lista + botão (coluna de "para empresas") --- */
+
+.feature-block>.section-title {
+    margin-bottom: 1rem;
+    line-height: 1.25;
+}
+
+.feature-block>.section-text {
+    margin-bottom: 2rem;
+    line-height: 1.625;
+}
+
+.feature-block>.check-list {
+    margin-bottom: 2.5rem;
+}
+
+.estab-grid--extra {
+    margin-top: 1rem;
+}
+
+/* Controles abaixo da lista (ver mais / explorar todos) */
+.estab-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.estab-actions__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+
+    .estab-actions,
+    .estab-actions__group {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding-block: 5rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+}

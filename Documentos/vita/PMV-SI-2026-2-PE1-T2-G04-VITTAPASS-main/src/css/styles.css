@@ -1,0 +1,1591 @@
+/* ==========================================================================
+VittaPass — folha de estilo principal
+--------------------------------------------------------------------------
+Organização do arquivo:
+  1. Reset
+  2. Tokens de tema (variáveis)
+  3. Base
+  4. Layout (container / seções)
+  5. Componentes
+  6. Utilitários e estado
+  7. Responsivo
+
+Dark mode: a classe .dark é aplicada em <html> pelo script.js. Só as
+variáveis do bloco html.dark mudam — nenhum componente precisa de regra
+duplicada para o tema escuro.
+
+Sobre os line-height: os valores em rem (ex. 1.25rem para texto de
+0.875rem) reproduzem a entrelinha que o Tailwind aplicava junto de cada
+tamanho de fonte. Sem eles o texto herdaria 1.5 e todo o espaçamento
+vertical da página mudaria.
+
+A fonte Inter é carregada via <link> no HTML, não por @import aqui
+(um @import atrasaria o download do CSS).
+========================================================================== */
+
+/* ==========================================================================
+1. Reset
+========================================================================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+2. Tokens de tema
+========================================================================== */
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Marca */
+  --primary: #3366ff;
+  --primary-dark: #2c58db;
+  --secondary: #132761;
+
+  /* Transparências da cor primária.
+  --primary-06 e --primary-08 ficam transparentes de propósito: no layout
+  original essas duas opacidades (classes bg-[#3366FF]/6 e /8) não eram
+  geradas pelo Tailwind, então o fundo aparecia branco. Mantido igual para
+  não mudar a aparência. Para usar o tom que o design previa, troque por
+  rgba(51, 102, 255, 0.06) e rgba(51, 102, 255, 0.08). */
+  --primary-05: rgba(51, 102, 255, 0.05);
+  --primary-06: transparent;
+  --primary-08: transparent;
+  --primary-10: rgba(51, 102, 255, 0.1);
+  --primary-20: rgba(51, 102, 255, 0.2);
+  --primary-25: rgba(51, 102, 255, 0.25);
+  --primary-30: rgba(51, 102, 255, 0.3);
+
+  /* Superfícies */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #f9fafb;
+  --surface-inset: #ffffff;
+  --band: #f9fafb;
+
+  /* Bordas */
+  --border: #e5e7eb;
+  --border-subtle: #f3f4f6;
+  --border-strong: #d1d5db;
+  --border-contrast: #e5e7eb;
+  --border-hover: #6b7280;
+
+  /* Texto */
+  --text: #111827;
+  --text-hero: #030712;
+  --text-heading: #111827;
+  --text-strong: #374151;
+  --text-body: #4b5563;
+  --text-muted: #6b7280;
+  --text-soft: #9ca3af;
+  --text-faint: #9ca3af;
+  --text-hover: #111827;
+
+  /* Avaliações */
+  --star-fill: #facc15;
+  --star-empty: #d1d5db;
+
+  /* Selos de plano */
+  --tag-basic: #d1d5db;
+  --tag-basic-text: #6b7280;
+  --tag-plus: #3366ff;
+  --tag-plus-text: #3366ff;
+  --tag-premium: #132761;
+  --tag-premium-text: #132761;
+
+  /* Texto sobre o fundo azul do plano destacado (igual nos dois temas) */
+  --on-primary: #ffffff;
+  --on-primary-soft: #dbeafe;
+  --on-primary-dim: #bfdbfe;
+
+  --transition: 150ms ease;
+
+  /* Marca de check desenhada por máscara, para não repetir um <svg>
+  inline em cada item de lista */
+  --check-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 7l3 3L11.5 4'/%3E%3C/svg%3E");
+}
+
+html.dark {
+  --bg: #020617;
+  --surface: #0f172a;
+  --surface-muted: #0f172a;
+  --surface-inset: #020617;
+  --band: rgba(15, 23, 42, 0.6);
+
+  --border: #1e293b;
+  --border-subtle: #1e293b;
+  --border-strong: #334155;
+  --border-contrast: #334155;
+  --border-hover: #64748b;
+
+  --text: #f3f4f6;
+  --text-hero: #ffffff;
+  --text-heading: #ffffff;
+  --text-strong: #e2e8f0;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  /* --text-soft não muda no escuro: os rótulos que o usam não tinham
+  variante dark no layout original */
+  --text-soft: #9ca3af;
+  --text-faint: #64748b;
+  --text-hover: #ffffff;
+
+  --tag-basic: #475569;
+  --tag-basic-text: #94a3b8;
+  --tag-plus: #60a5fa;
+  --tag-plus-text: #60a5fa;
+  --tag-premium: #93c5fd;
+  --tag-premium-text: #93c5fd;
+}
+
+/* ==========================================================================
+3. Base
+========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+
+/* ==========================================================================
+4. Layout
+========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  padding-block: 4rem;
+}
+
+.section--lg {
+  padding-block: 5rem;
+}
+
+.section--xl {
+  padding-block: 6rem;
+}
+
+/* Faixa de fundo cinza com bordas acima e abaixo */
+.section--band {
+  background: var(--band);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+/* Grade de duas colunas do hero, dos benefícios e de "para empresas".
+Cada seção usa um espaçamento diferente, daí os modificadores. */
+.split {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.split--tight {
+  gap: 2rem;
+}
+
+.split--mid {
+  gap: 3rem;
+}
+
+.split--start {
+  align-items: start;
+}
+
+/* Grade de três colunas (categorias) */
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+5. Componentes
+========================================================================== */
+
+/* --- Tipografia de seção --- */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--primary-25);
+  border-radius: 9999px;
+  background: var(--primary-05);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.panel>.eyebrow {
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  color: var(--text-heading);
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+}
+
+.section-title--sm {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.section-text {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.section-text--relaxed {
+  line-height: 1.625;
+}
+
+.section-head {
+  margin-bottom: 2.5rem;
+}
+
+.section-head--center {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.section-head--spacious {
+  margin-bottom: 3.5rem;
+}
+
+/* Cabeçalho com o link "explorar todos" alinhado à direita.
+Sem gap: o justify-content já separa os dois lados, e um gap
+roubaria largura do título, mudando onde ele quebra. */
+.section-head--row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.section-head>.section-title,
+.section-head--center>.section-title,
+.section-head--spacious>.section-title,
+.section-head--row .section-title {
+  margin-bottom: 0.5rem;
+}
+
+/* Rótulo pequeno em maiúsculas ("O QUE SUA EMPRESA TEM ACESSO", footer) */
+.overline {
+  margin-bottom: 1rem;
+  color: var(--text-soft);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* --- Botões ---
+A base não tem borda: as variantes com contorno a declaram. Uma borda
+transparente na base deixaria os botões sólidos 2px mais altos. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+/* Tamanhos */
+.btn--sm {
+  padding: 0.5rem 1rem;
+}
+
+.btn--wide {
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+}
+
+.btn--pill {
+  border-radius: 0.5rem;
+}
+
+.btn--block {
+  display: flex;
+  width: 100%;
+  padding-inline: 1rem;
+}
+
+.btn--tall {
+  padding-block: 0.875rem;
+  border-radius: 0.75rem;
+}
+
+/* Variantes */
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn--outline {
+  border: 1px solid var(--border-strong);
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+.btn--outline:hover {
+  border-color: var(--border-hover);
+}
+
+.btn--outline-primary {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn--outline-primary:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Contorno primário que só ganha um fundo suave no hover */
+.btn--outline-soft {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn--outline-soft:hover {
+  background: var(--primary-05);
+}
+
+.btn--ghost {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn--ghost:hover {
+  color: var(--text-hover);
+}
+
+/* Sobre o fundo azul-escuro da seção de chamada final */
+.btn--light {
+  background: #fff;
+  color: var(--secondary);
+}
+
+.btn--light:hover {
+  background: #f3f4f6;
+}
+
+.btn--on-dark {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn--on-dark:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão só com ícone (alternar tema no header) */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.375rem;
+  color: var(--text-body);
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.btn-icon:hover {
+  border-color: var(--border-hover);
+  color: var(--text-hover);
+}
+
+/* --- Links --- */
+
+.link-muted {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: color var(--transition);
+}
+
+.link-muted:hover {
+  color: var(--text-hover);
+}
+
+.link-primary {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link-primary:hover {
+  color: var(--primary-dark);
+}
+
+/* --- Header --- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 4rem;
+}
+
+.brand {
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: color var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--text-hover);
+}
+
+.header-actions {
+  display: none;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  padding: 0.375rem;
+  color: var(--text-body);
+  transition: color var(--transition);
+}
+
+.menu-toggle:hover {
+  color: var(--text-hover);
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* No menu mobile os links são um tom mais escuros que no desktop */
+.mobile-menu .nav-link {
+  color: var(--text-body);
+}
+
+.mobile-menu__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-menu__actions .btn {
+  display: flex;
+  padding-block: 0.625rem;
+}
+
+/* --- Cards --- */
+
+.card {
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+/* Padding fixo maior (card de benefícios para empresas) */
+.card--lg {
+  padding: 2.5rem;
+}
+
+/* Empilha o conteúdo com espaçamento uniforme */
+.card--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Painel com fundo levemente cinza (benefícios do assinante) */
+.panel {
+  padding: 2rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.panel .section-title {
+  margin-bottom: 0.75rem;
+}
+
+.card-title-primary {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.card-subtitle {
+  margin-bottom: 0.5rem;
+  color: var(--text-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.card-text {
+  color: var(--text-body);
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+/* Caixa de ícone quadrada arredondada */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: var(--primary-08);
+  color: var(--primary);
+}
+
+.icon-box--lg {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+
+/* Texto legal miúdo abaixo do formulário */
+.fineprint {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+  line-height: 1.625;
+}
+
+/* --- Formulário --- */
+
+.field {
+  margin-bottom: 0.75rem;
+}
+
+.field__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-strong);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.75rem;
+  background: var(--surface-inset);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.input::placeholder {
+  color: var(--text-soft);
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.15);
+}
+
+/* --- Ícone de check --- */
+
+/* A cor segue o currentColor do elemento pai */
+.check {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  -webkit-mask: var(--check-icon) no-repeat center / contain;
+  mask: var(--check-icon) no-repeat center / contain;
+}
+
+/* Check dentro de um círculo azul claro */
+.check-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  background: var(--primary-10);
+  color: var(--primary);
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.check-list>li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-strong);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Variante compacta, com check simples alinhado ao texto */
+.check-list--compact {
+  gap: 0.625rem;
+}
+
+.check-list--compact>li {
+  gap: 0.625rem;
+  color: var(--text-body);
+}
+
+.check-list--compact>li>.check {
+  color: var(--primary);
+}
+
+/* Lista separada do conteúdo acima por uma linha */
+.check-list--divided {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* --- Categorias --- */
+
+.cat-card {
+  display: block;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.cat-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cat-card__icon {
+  margin-bottom: 1.25rem;
+}
+
+.cat-card__title {
+  margin-bottom: 0.375rem;
+  color: var(--text-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.cat-card:hover .cat-card__title {
+  color: var(--primary);
+}
+
+.cat-card__text {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* --- Planos --- */
+
+/* align-items: stretch (padrão) iguala a altura dos três cards. Combinado
+com flex:1 em .plan__features, a sobra vai para a lista e o botão fica
+sempre colado na base, alinhado entre os cards — independente do texto. */
+.plans {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--text-heading);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+/* Plano destacado: fundo azul fixo nos dois temas */
+.plan--featured {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.plan__head {
+  margin-bottom: 1.75rem;
+}
+
+.plan__name {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Preço mensal do plano */
+.plan__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.plan__price-value {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.plan__price-period {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Quanto os créditos valem em serviço avulso.
+Usa --text-muted, e não --text-soft, para manter contraste acima de
+4.5:1 neste tamanho de 12px (RNF-06). */
+.plan__price-note {
+  margin-top: 0.375rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.plan__desc {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.plan--featured .plan__desc,
+.plan--featured .plan__price-period {
+  color: var(--on-primary-dim);
+}
+
+/* Branco em vez do azul claro: sobre o fundo azul é a única cor que
+alcança 4.5:1 neste tamanho de 12px */
+.plan--featured .plan__price-note {
+  color: #fff;
+}
+
+.plan__badge {
+  position: absolute;
+  top: -0.875rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.75rem;
+  background: #fff;
+  border: 1px solid var(--primary-30);
+  border-radius: 9999px;
+  color: var(--primary);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.plan__features {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.plan__features>li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  color: var(--text-body);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.plan__features>li>.check {
+  margin-top: 0.125rem;
+  color: var(--primary);
+}
+
+.plan--featured .plan__features>li {
+  color: var(--on-primary-soft);
+}
+
+.plan--featured .plan__features>li>.check {
+  color: var(--on-primary-dim);
+}
+
+/* --- Estabelecimentos --- */
+
+.estab-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.estab-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.estab-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.estab-card__cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2rem;
+  background: var(--primary-06);
+}
+
+.estab-card__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background: var(--surface-inset);
+  border: 1px solid var(--primary-20);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 2rem;
+}
+
+.estab-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.estab-card__name {
+  color: var(--text-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.375;
+}
+
+.estab-card__cat {
+  margin-top: 0.125rem;
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.estab-card__services {
+  /* A margem reproduz o espaço que o layout original criava com um
+  <div class="flex-1"> vazio entre o texto e o botão */
+  margin-bottom: 0.75rem;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  line-height: 1.625;
+}
+
+/* Empurra o botão para a base, mantendo todos os cards alinhados */
+.estab-card__cta {
+  margin-top: auto;
+  padding-block: 0.625rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.estab-card__plan {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.estab-card__plan-label {
+  color: var(--text-faint);
+  font-size: 0.625rem;
+}
+
+/* --- Avaliação em estrelas --- */
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating__value {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+/* As cinco estrelas vazias vêm do ::before e as preenchidas do ::after,
+recortado por largura. Evita repetir cinco <span> por card. */
+.stars {
+  position: relative;
+  display: inline-block;
+  color: var(--star-empty);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.stars::before {
+  content: "★★★★★";
+}
+
+.stars::after {
+  content: "★★★★★";
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  color: var(--star-fill);
+  white-space: nowrap;
+}
+
+.stars--4::after {
+  width: 80%;
+}
+
+.stars--5::after {
+  width: 100%;
+}
+
+/* --- Selo de plano --- */
+
+.plan-tag {
+  padding: 0.125rem 0.5rem;
+  border: 1px solid;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+.plan-tag--basic {
+  border-color: var(--tag-basic);
+  color: var(--tag-basic-text);
+}
+
+.plan-tag--plus {
+  border-color: var(--tag-plus);
+  color: var(--tag-plus-text);
+}
+
+.plan-tag--premium {
+  border-color: var(--tag-premium);
+  color: var(--tag-premium-text);
+}
+
+/* --- Como funciona (lista de passos) --- */
+
+.steps {
+  max-width: 48rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.step__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step__num {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--border-contrast);
+  border-radius: 9999px;
+  background: var(--surface-inset);
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1rem;
+}
+
+/* Primeiro passo da lista */
+.step__num--active {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Linha vertical que liga um passo ao seguinte */
+.step__line {
+  flex: 1;
+  width: 1px;
+  min-height: 2.5rem;
+  margin-block: 0.25rem;
+  background: var(--border-subtle);
+}
+
+.step__body {
+  padding-bottom: 2rem;
+}
+
+.step:last-child .step__body {
+  padding-bottom: 0;
+}
+
+.step__title {
+  margin-bottom: 0.375rem;
+  color: var(--text-heading);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.step__text {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+/* --- Seção de chamada final --- */
+
+.cta {
+  padding: 4rem 2rem;
+  background: var(--secondary);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.cta__title {
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.cta__text {
+  max-width: 28rem;
+  margin: 0 auto 2.5rem;
+  color: #8aabff;
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.site-footer__inner {
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-grid__brand {
+  grid-column: span 2;
+}
+
+.footer-grid__brand .brand {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.footer-about {
+  max-width: 260px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--text-hover);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-bottom p {
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.footer-bottom__side {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social {
+  color: var(--text-soft);
+  transition: color var(--transition);
+}
+
+.footer-social:hover {
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+6. Utilitários e estado
+
+.hidden e .grid são manipuladas pelo script.js (menu mobile e lista de
+estabelecimentos). Precisam vir DEPOIS dos componentes para vencer o
+display deles por ordem de cascata — por isso não usam !important,
+que impediria .only-desktop de reaparecer no breakpoint md.
+========================================================================== */
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Visível só a partir de 768px */
+.only-desktop {
+  display: none;
+}
+
+/* Visível só abaixo de 768px */
+.only-mobile {
+  display: inline-block;
+}
+
+.scroll-offset {
+  scroll-margin-top: 6rem;
+}
+
+/* ==========================================================================
+7. Responsivo
+========================================================================== */
+
+@media (min-width: 640px) {
+  .estab-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+
+  .split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
+  }
+
+  .split--tight {
+    gap: 3rem;
+  }
+
+  .split--mid {
+    gap: 4rem;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .plans {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .nav-desktop,
+  .header-actions {
+    display: flex;
+  }
+
+  /* O menu mobile fica sempre oculto no desktop, mesmo depois de o
+  script.js remover a classe .hidden */
+  .menu-toggle,
+  .mobile-menu {
+    display: none;
+  }
+
+  .card--roomy,
+  .panel {
+    padding: 2.5rem;
+  }
+
+  .cta {
+    padding-block: 5rem;
+  }
+
+  .cta__title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+  }
+
+  .only-desktop {
+    display: inline-block;
+  }
+
+  .only-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .estab-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   Utilitários Finais de Autenticação
+   ========================================================================== */
+
+.auth-container {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.flex-row-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.tab-switch {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 1.25rem;
+  background: var(--surface-muted);
+  padding: 0.375rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.relative-box {
+  position: relative;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--text-body);
+  font-size: 0.875rem;
+}
+
+.divider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 0.25rem;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-subtle);
+}
+
+.divider-text {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.social-buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.text-center-spaced {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* --- Feedback dos formulários de autenticação (auth.js) --- */
+
+.form-alert {
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  animation: form-alert-in 200ms ease;
+}
+
+.form-alert[hidden] {
+  display: none;
+}
+
+.form-alert--error {
+  border-color: rgba(220, 38, 38, 0.3);
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+}
+
+.form-alert--success {
+  border-color: rgba(22, 163, 74, 0.3);
+  background: rgba(22, 163, 74, 0.08);
+  color: #15803d;
+}
+
+html.dark .form-alert--error {
+  color: #fca5a5;
+}
+
+html.dark .form-alert--success {
+  color: #86efac;
+}
+
+.input--invalid,
+.input--invalid:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+@keyframes form-alert-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

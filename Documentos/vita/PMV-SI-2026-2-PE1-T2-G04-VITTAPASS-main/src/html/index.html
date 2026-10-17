@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VittaPass</title>
+  <meta name="description" content="Sua beleza. Sua escolha. Serviços de beleza e estética em um só lugar.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pages/index.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand">VittaPass</a>
+
+      <nav class="nav-desktop">
+        <a href="#planos" class="nav-link">Planos</a>
+        <a href="#estabelecimentos" class="nav-link">Estabelecimentos</a>
+        <a href="#empresas" class="nav-link">Para empresas</a>
+        <a href="#como-funciona" class="nav-link">Como funciona</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" data-js-action="toggle-theme" class="btn-icon" aria-label="Alternar tema">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16.8 12.5A7 7 0 0 1 7.5 3.2 7 7 0 1 0 16.8 12.5z" />
+          </svg>
+        </button>
+
+        <a href="./Login/login.html" class="btn btn--sm btn--outline">Entrar</a>
+        <a href="#planos" class="btn btn--sm btn--primary">Começar agora</a>
+      </div>
+
+      <button id="menu-button" class="menu-toggle" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round">
+          <path d="M3 5h14M3 10h14M3 15h14" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <a href="#planos" class="nav-link">Planos</a>
+      <a href="#estabelecimentos" class="nav-link">Estabelecimentos</a>
+      <a href="#empresas" class="nav-link">Para empresas</a>
+      <a href="#como-funciona" class="nav-link">Como funciona</a>
+
+      <div class="mobile-menu__actions">
+        <button type="button" data-js-action="toggle-theme" class="btn btn--outline">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16.8 12.5A7 7 0 0 1 7.5 3.2 7 7 0 1 0 16.8 12.5z" />
+          </svg>
+          Alternar tema
+        </button>
+
+        <a href="Login/login.html" class="btn btn--outline">Entrar</a>
+        <a href="#planos" class="btn btn--primary">Começar agora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero container split">
+    <div>
+      <span class="eyebrow">Plataforma de beleza por assinatura</span>
+
+      <h1 class="hero-title">Sua beleza.<br />Sua escolha.</h1>
+
+      <p class="hero-text">
+        Serviços de beleza e estética em um só lugar. Assine um plano, encontre um estabelecimento parceiro e agende
+        quando quiser.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#estabelecimentos" class="btn btn--primary">Explorar estabelecimentos</a>
+        <a href="#planos" class="btn btn--outline">Ver planos</a>
+        <a href="#como-funciona" class="btn btn--ghost">Como funciona →</a>
+      </div>
+    </div>
+
+    <div class="card card--roomy card--form">
+      <h2 class="card-title-primary">Para empresas</h2>
+      <p class="card-text">
+        Leve benefícios de beleza e estética para sua equipe. Conecte seus colaboradores a uma rede de parceiros com
+        gestão centralizada.
+      </p>
+
+      <a href="#beneficios-empresas" class="btn btn--block btn--tall btn--outline-soft">Ver benefícios para empresas</a>
+
+      <div class="field">
+        <label for="company-email" class="field__label">E-mail corporativo</label>
+        <input id="company-email" type="email" class="input" placeholder="nome@empresa.com" />
+      </div>
+
+      <a href="#empresas" class="btn btn--block btn--tall btn--primary">Falar com a equipe de vendas</a>
+
+      <p class="fineprint">
+        Você concorda que o VittaPass use suas informações para entrar em contato sobre nossos produtos e serviços.
+        Dúvidas?
+        <a href="#" class="link-primary">Consulte nossa Política de Privacidade.</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS PARA O ASSINANTE -->
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <span class="eyebrow">O que você tem acesso</span>
+
+        <div class="split split--tight split--start">
+          <div>
+            <h2 class="section-title section-title--sm">Benefícios para o assinante</h2>
+            <p class="section-text section-text--relaxed">
+              Com o VittaPass, você acessa serviços de beleza e estética de forma simples, sem precisar ligar ou se
+              deslocar sem agendamento.
+            </p>
+          </div>
+
+          <ul class="check-list">
+            <li><span class="check-dot"><span class="check"></span></span>Acesso à rede de parceiros de beleza e
+              estética</li>
+            <li><span class="check-dot"><span class="check"></span></span>Cabelo, pele e unhas em um só lugar</li>
+            <li><span class="check-dot"><span class="check"></span></span>Agendamento online sem precisar ligar</li>
+            <li><span class="check-dot"><span class="check"></span></span>Check-in por QR Code no estabelecimento</li>
+            <li><span class="check-dot"><span class="check"></span></span>Histórico de utilizações e benefícios</li>
+            <li><span class="check-dot"><span class="check"></span></span>Cancele ou remarque dentro do prazo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section id="categorias" class="section section--band">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title section-title--sm">Explore por categoria</h2>
+        <p class="section-text">Encontre o serviço que você procura na rede de parceiros.</p>
+      </div>
+
+      <div class="grid-3">
+        <a href="#estabelecimentos" class="cat-card">
+          <div class="icon-box cat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3c0 4 3 5 3 9" />
+              <path d="M10 3c0 4 3 5 3 9" />
+              <path d="M5 17h10" />
+            </svg>
+          </div>
+          <h3 class="cat-card__title">Cabelo</h3>
+          <p class="cat-card__text">Cortes, colorações, hidratações e tratamentos capilares.</p>
+        </a>
+
+        <a href="#estabelecimentos" class="cat-card">
+          <div class="icon-box cat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2C6 2 3 5.5 3 9c0 4 3.5 7 7 9 3.5-2 7-5 7-9 0-3.5-3-7-7-7z" />
+            </svg>
+          </div>
+          <h3 class="cat-card__title">Pele</h3>
+          <p class="cat-card__text">Limpeza de pele, peeling, tratamentos faciais e estética.</p>
+        </a>
+
+        <a href="#estabelecimentos" class="cat-card">
+          <div class="icon-box cat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="3" width="10" height="12" rx="3" />
+              <path d="M8 15v2M12 15v2" />
+            </svg>
+          </div>
+          <h3 class="cat-card__title">Unhas</h3>
+          <p class="cat-card__text">Manicure, pedicure, nail art e cuidados com as unhas.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="section section--lg">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <h2 class="section-title">Escolha seu plano</h2>
+        <p class="section-text">Assine e tenha acesso à rede de parceiros. Seus créditos renovam a cada mês.</p>
+      </div>
+
+      <div class="plans">
+        <!-- Plano Básico -->
+        <div class="plan">
+          <div class="plan__head">
+            <h3 class="plan__name">Básico</h3>
+            <p class="plan__price">
+              <span class="plan__price-value">R$ 129,90</span>
+              <span class="plan__price-period">/mês</span>
+            </p>
+            <p class="plan__price-note">Equivale a R$ 315 em serviços avulsos</p>
+            <p class="plan__desc">Para quem quer começar a cuidar da beleza com praticidade.</p>
+          </div>
+
+          <ul class="plan__features">
+            <li><span class="check"></span>9 créditos por mês: 3 manicures, 1 corte, 1 barba e 1 escova</li>
+            <li><span class="check"></span>Corte e barba a cada 20 dias, manicure a cada 10</li>
+            <li><span class="check"></span>Cabelo sem química e unhas simples</li>
+            <li><span class="check"></span>Barbearias e estúdios de bairro</li>
+            <li><span class="check"></span>Agendamento online e check-in por QR Code</li>
+          </ul>
+
+          <a href="Cadastro/Cadastro-cliente.html" class="btn btn--block btn--pill btn--primary">Conhecer plano</a>
+        </div>
+
+        <!-- Plano Plus -->
+        <div class="plan plan--featured">
+          <span class="plan__badge">Mais popular</span>
+
+          <div class="plan__head">
+            <h3 class="plan__name">Plus</h3>
+            <p class="plan__price">
+              <span class="plan__price-value">R$ 189,90</span>
+              <span class="plan__price-period">/mês</span>
+            </p>
+            <p class="plan__price-note">Equivale a R$ 525 em serviços avulsos</p>
+            <p class="plan__desc">Mais serviços e flexibilidade para a sua rotina de beleza.</p>
+          </div>
+
+          <ul class="plan__features">
+            <li><span class="check"></span>15 créditos por mês: 4 manicures, 2 cortes, 1 hidratação e 1 limpeza de pele
+            </li>
+            <li><span class="check"></span>Intervalos menores: corte a cada 15 dias, manicure a cada 7</li>
+            <li><span class="check"></span>Tudo do Básico, mais pele e coloração</li>
+            <li><span class="check"></span>Limpeza de pele, sobrancelha e depilação</li>
+            <li><span class="check"></span>Salões completos, além dos estúdios de bairro</li>
+          </ul>
+
+          <a href="Cadastro/Cadastro-cliente.html" class="btn btn--block btn--pill btn--light">Conhecer plano</a>
+        </div>
+
+        <!-- Plano Premium -->
+        <div class="plan">
+          <div class="plan__head">
+            <h3 class="plan__name">Premium</h3>
+            <p class="plan__price">
+              <span class="plan__price-value">R$ 259,90</span>
+              <span class="plan__price-period">/mês</span>
+            </p>
+            <p class="plan__price-note">Equivale a R$ 770 em serviços avulsos</p>
+            <p class="plan__desc">Para quem faz química e tratamentos estéticos com regularidade.</p>
+          </div>
+
+          <ul class="plan__features">
+            <li><span class="check"></span>22 créditos por mês: 1 mechas, 1 coloração, 1 corte e 4 manicures</li>
+            <li><span class="check"></span>Os intervalos mais curtos da plataforma</li>
+            <li><span class="check"></span>Mechas, progressiva e alongamento de unhas</li>
+            <li><span class="check"></span>Peeling e tratamentos faciais avançados</li>
+            <li><span class="check"></span>Clínicas de estética e salões de alto padrão</li>
+          </ul>
+
+          <a href="Cadastro/Cadastro-cliente.html" class="btn btn--block btn--pill btn--primary">Conhecer plano</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTABELECIMENTOS DESTAQUES -->
+  <section id="estabelecimentos" class="section section--band">
+    <div class="container">
+      <div class="section-head--row">
+        <div>
+          <h2 class="section-title">Estabelecimentos em destaque</h2>
+          <p class="section-text">Conheça alguns dos nossos parceiros mais populares.</p>
+        </div>
+
+        <a href="estabelecimentos.html" class="link-muted only-desktop">Explorar todos os estabelecimentos →</a>
+      </div>
+
+      <div id="establishments-grid" class="estab-grid">
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">S</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Salão Bella Vista</h3>
+              <p class="estab-card__cat">Cabelo</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--4"></span>
+              <span class="rating__value">4.8</span>
+            </div>
+            <p class="estab-card__services">Corte · Coloração · Escova</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--plus">Plus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">C</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Clínica Estética Premium</h3>
+              <p class="estab-card__cat">Pele</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--5"></span>
+              <span class="rating__value">4.9</span>
+            </div>
+            <p class="estab-card__services">Limpeza de Pele · Tratamento Facial</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--premium">Premium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">E</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Espaço Nail Design</h3>
+              <p class="estab-card__cat">Unhas</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--4"></span>
+              <span class="rating__value">4.6</span>
+            </div>
+            <p class="estab-card__services">Manicure · Pedicure · Nail Art</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--basic">Básico</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">B</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Barbearia Classic</h3>
+              <p class="estab-card__cat">Cabelo</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--4"></span>
+              <span class="rating__value">4.7</span>
+            </div>
+            <p class="estab-card__services">Corte · Barba · Tratamento</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--plus">Plus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estabelecimentos extras (exibidos ao expandir, via script.js) -->
+      <div id="extra-establishments" class="estab-grid estab-grid--extra hidden">
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">S</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Studio Luxo</h3>
+              <p class="estab-card__cat">Cabelo</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--5"></span>
+              <span class="rating__value">4.9</span>
+            </div>
+            <p class="estab-card__services">Corte · Coloração · Hidratação</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--premium">Premium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">S</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Spa Zen Beleza</h3>
+              <p class="estab-card__cat">Pele</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--4"></span>
+              <span class="rating__value">4.6</span>
+            </div>
+            <p class="estab-card__services">Limpeza · Relaxamento · Hidratação</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--plus">Plus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">N</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Nail Studio Pro</h3>
+              <p class="estab-card__cat">Unhas</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--4"></span>
+              <span class="rating__value">4.7</span>
+            </div>
+            <p class="estab-card__services">Manicure · Pedicure · Alongamento</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--plus">Plus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="estab-card">
+          <div class="estab-card__cover">
+            <div class="estab-card__logo">B</div>
+          </div>
+          <div class="estab-card__body">
+            <div>
+              <h3 class="estab-card__name">Barbearia Moderna</h3>
+              <p class="estab-card__cat">Cabelo</p>
+            </div>
+            <div class="rating">
+              <span class="stars stars--4"></span>
+              <span class="rating__value">4.4</span>
+            </div>
+            <p class="estab-card__services">Corte Moderno · Barba · Sobrancelha</p>
+            <a href="estabelecimentos.html" class="btn btn--block btn--primary estab-card__cta">Ver estabelecimento</a>
+            <div class="estab-card__plan">
+              <span class="estab-card__plan-label">Disponível no plano</span>
+              <span class="plan-tag plan-tag--basic">Básico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="estab-actions">
+        <a href="estabelecimentos.html" class="link-muted only-mobile">Explorar todos os estabelecimentos →</a>
+
+        <div class="estab-actions__group">
+          <button type="button" id="toggle-establishments" class="btn btn--pill btn--outline-primary">Ver mais
+            estabelecimentos</button>
+          <a href="estabelecimentos.html" id="explore-all-button" class="link-muted hidden">Explorar todos os
+            estabelecimentos →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" class="section section--lg">
+    <div class="container">
+      <div class="section-head section-head--spacious">
+        <h2 class="section-title">Como funciona</h2>
+        <p class="section-text">Comece a usar o VittaPass em poucos passos.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__marker">
+            <div class="step__num step__num--active">01</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">Escolha seu plano</h3>
+            <p class="step__text">Selecione o plano que melhor se adapta à sua rotina e necessidades de beleza.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__marker">
+            <div class="step__num">02</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">Encontre um estabelecimento</h3>
+            <p class="step__text">Explore a rede de parceiros e filtre por localização, serviço e disponibilidade.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__marker">
+            <div class="step__num">03</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">Agende seu atendimento</h3>
+            <p class="step__text">Escolha o profissional, a data e o horário diretamente pela plataforma.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__marker">
+            <div class="step__num">04</div>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">Utilize seu benefício</h3>
+            <p class="step__text">Faça o check-in via QR Code e utilize seu benefício conforme as regras do plano
+              contratado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA EMPRESAS -->
+  <section id="empresas" class="section section--lg section--band">
+    <div class="container split split--mid">
+      <div class="feature-block">
+        <span class="eyebrow">VittaPass Empresas</span>
+
+        <h2 class="section-title">Quer levar o VittaPass para sua empresa?</h2>
+
+        <p class="section-text">
+          Ofereça aos seus colaboradores acesso a serviços de beleza e estética por meio do VittaPass. Conheça como a
+          solução pode funcionar para sua equipe.
+        </p>
+
+        <p class="overline">O que sua empresa tem acesso</p>
+
+        <ul class="check-list">
+          <li><span class="check-dot"><span class="check"></span></span>Benefício de beleza e estética para
+            colaboradores</li>
+          <li><span class="check-dot"><span class="check"></span></span>Acesso facilitado à rede de parceiros</li>
+          <li><span class="check-dot"><span class="check"></span></span>Gestão centralizada dos benefícios</li>
+          <li><span class="check-dot"><span class="check"></span></span>Relatórios de utilização por equipe</li>
+        </ul>
+
+        <a href="#" class="btn btn--primary">Falar com a equipe de vendas</a>
+      </div>
+
+      <div id="beneficios-empresas" class="card card--lg card--stack scroll-offset">
+        <div class="icon-box icon-box--lg">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="18" height="13" rx="2" />
+            <path d="M7 7V5a4 4 0 0 1 8 0v2" />
+            <circle cx="11" cy="13" r="1.5" />
+          </svg>
+        </div>
+
+        <div>
+          <h3 class="card-subtitle">Benefício que seus colaboradores usam</h3>
+          <p class="section-text section-text--relaxed">
+            Conecte sua equipe a uma rede de parceiros de beleza e estética. Gestão centralizada, sem burocracia.
+          </p>
+        </div>
+
+        <ul class="check-list check-list--compact check-list--divided">
+          <li><span class="check"></span>Agendamento online pelos colaboradores</li>
+          <li><span class="check"></span>Check-in por QR Code nos estabelecimentos</li>
+          <li><span class="check"></span>Histórico de utilizações por pessoa</li>
+          <li><span class="check"></span>Relatórios de uso por equipe</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--xl">
+    <div class="container">
+      <div class="cta">
+        <h2 class="cta__title">Comece a cuidar da sua beleza hoje.</h2>
+
+        <p class="cta__text">
+          Assine um plano, encontre estabelecimentos parceiros e agende seus serviços de beleza e estética com
+          praticidade.
+        </p>
+
+        <div class="cta__actions">
+          <a href="Cadastro/Cadastro-cliente.html" class="btn btn--wide btn--light">Criar conta</a>
+          <a href="#planos" class="btn btn--wide btn--on-dark">Ver planos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="footer-grid">
+        <div class="footer-grid__brand">
+          <a href="index.html" class="brand">VittaPass</a>
+          <p class="footer-about">
+            Plataforma de assinaturas de beleza e estética para pessoas e empresas.
+          </p>
+        </div>
+
+        <div>
+          <p class="overline">Produto</p>
+          <ul class="footer-links">
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
+            <li><a href="estabelecimentos.html">Profissionais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="overline">Empresa</p>
+          <ul class="footer-links">
+            <li><a href="#como-funciona">Sobre nós</a></li>
+            <li><a href="#empresas">Para empresas</a></li>
+            <li><a href="Cadastro/Cadastro-estabelecimento.html">Parcerias</a></li>
+            <li><a href="Cadastro/Cadastro-estabelecimento.html">Seja parceiro</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="overline">Suporte</p>
+          <ul class="footer-links">
+            <li><a href="#">Central de ajuda</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 VittaPass. Todos os direitos reservados.</p>
+        <div class="footer-bottom__side">
+          <a href="https://github.com/ICEI-PUC-Minas-PMV-SI/PMV-SI-2026-2-PE1-T2-G04-VITTAPASS" target="_blank"
+            rel="noopener noreferrer" class="footer-social" aria-label="GitHub">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+          <p>Belo Horizonte, Brasil</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+
+</html>

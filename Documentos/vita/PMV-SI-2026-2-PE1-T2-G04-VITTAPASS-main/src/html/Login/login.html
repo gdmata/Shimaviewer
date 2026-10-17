@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>VittaPass - Login</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="../index.html" class="brand">VittaPass</a>
+      <button type="button" data-js-action="toggle-theme" class="btn-icon" aria-label="Alternar tema">
+        <svg id="theme-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16.8 12.5A7 7 0 0 1 7.5 3.2 7 7 0 1 0 16.8 12.5z" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container auth-container">
+
+      <div class="card card--stack">
+        <div class="section-head--center">
+          <h1 class="section-title section-title--sm">Bem-vindo de volta</h1>
+          <p class="section-text">Acesse sua conta para continuar de onde parou.</p>
+
+          <div class="tab-switch">
+            <button type="button" class="btn btn--primary btn--sm flex-1">Sou Cliente</button>
+            <button type="button" class="btn btn--ghost btn--sm flex-1"
+              data-js-action="navigate" data-js-href="login-parceiro.html">Sou Parceiro</button>
+          </div>
+        </div>
+
+        <form id="formLoginCliente" action="#" method="post" class="card--stack">
+          <!-- Campo E-mail -->
+          <div class="field">
+            <label for="loginEmail" class="field__label">Endereço de e-mail</label>
+            <input type="email" id="loginEmail" class="input" placeholder="voce@exemplo.com" required>
+          </div>
+
+          <!-- Campo Senha -->
+          <div class="field">
+            <label for="password" class="field__label">Senha</label>
+            <div class="relative-box">
+              <input type="password" id="password" class="input" placeholder="Digite sua senha" required>
+              <button type="button" aria-label="Mostrar senha" data-js-action="toggle-password-login"
+                class="password-toggle-btn">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="M1 9C1 9 4 3 9 3C14 3 17 9 17 9C17 9 14 15 9 15C4 15 1 9 1 9Z" />
+                  <circle cx="9" cy="9" r="3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex-row-center">
+            <label class="checkbox-label">
+              <input type="checkbox" id="lembrar"> Lembrar de mim
+            </label>
+            <a href="#" class="link-primary">Esqueceu a senha?</a>
+          </div>
+
+          <!-- Botão Principal -->
+          <button type="submit" class="btn btn--primary btn--block btn--tall">Entrar na conta</button>
+
+          <!-- Divisória -->
+          <div class="divider-container">
+            <div class="divider-line"></div>
+            <span class="divider-text">OU</span>
+            <div class="divider-line"></div>
+          </div>
+
+          <!-- Botões Sociais -->
+          <div class="social-buttons-container">
+            <button type="button" class="btn btn--outline btn--block flex-1 btn-social">
+              <img src="../../assets/logos/logo-google.png" alt="Logo Google" width="18" height="18">
+              Google
+            </button>
+            <button type="button" class="btn btn--outline btn--block flex-1 btn-social">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.83 5.37c.56-.69.94-1.65.84-2.61-.83.04-1.84.55-2.43 1.24-.52.6-.98 1.58-.85 2.54 1.01.08 1.88-.47 2.44-1.17z" />
+              </svg>
+              Apple
+            </button>
+          </div>
+
+          <div class="text-center-spaced">
+            <span>Não tem uma conta?</span>
+            <a href="../Cadastro/Cadastro-cliente.html" class="link-primary">Cadastre-se</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../js/script.js"></script>
+  <script src="../../js/auth.js?v=2"></script>
+</body>
+
+</html>

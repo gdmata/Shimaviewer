@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estabelecimentos - VittaPass</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/script.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen bg-white font-sans text-gray-900 antialiased transition-colors dark:bg-slate-950 dark:text-gray-100">
+    
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white border-b border-gray-200 transition-colors dark:bg-slate-950 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between gap-6">
+        <a href="index.html" class="text-[#3366FF] font-bold text-[1.125rem] tracking-tight shrink-0">VittaPass</a>
+
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="index.html#planos" class="text-sm text-gray-500 hover:text-gray-900 transition-colors dark:text-slate-400 dark:hover:text-white">Planos</a>
+          <a href="estabelecimentos.html" class="text-sm text-[#3366FF] font-medium">Estabelecimentos</a>
+          <a href="index.html#empresas" class="text-sm text-gray-500 hover:text-gray-900 transition-colors dark:text-slate-400 dark:hover:text-white">Para empresas</a>
+          <a href="index.html#como-funciona" class="text-sm text-gray-500 hover:text-gray-900 transition-colors dark:text-slate-400 dark:hover:text-white">Como funciona</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-2.5">
+          <button
+            type="button"
+            data-js-action="toggle-theme"
+            class="p-2.5 text-gray-600 border border-gray-300 rounded-md hover:border-gray-500 hover:text-gray-900 transition-colors dark:text-slate-300 dark:border-slate-700 dark:hover:border-slate-500 dark:hover:text-white"
+            aria-label="Alternar tema"
+          >
+            <svg id="theme-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16.8 12.5A7 7 0 0 1 7.5 3.2 7 7 0 1 0 16.8 12.5z" />
+            </svg>
+          </button>
+          
+          <a href="#" class="text-sm font-medium text-gray-700 px-4 py-2 border border-gray-300 rounded-md hover:border-gray-500 transition-colors dark:text-slate-200 dark:border-slate-700 dark:hover:border-slate-500">Entrar</a>
+          
+          <a href="index.html#planos" class="text-sm font-semibold bg-[#3366FF] text-white px-4 py-2 rounded-md hover:bg-[#2C58DB] transition-colors">Começar agora</a>
+        </div>
+
+        <button
+          id="menu-button"
+          class="md:hidden p-1.5 text-gray-600 hover:text-gray-900 transition-colors dark:text-slate-300 dark:hover:text-white"
+          aria-label="Menu"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M3 5h14M3 10h14M3 15h14" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO ESTABELECIMENTOS -->
+    <section class="bg-gray-50 py-16 dark:bg-slate-900/60">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="text-center mb-10">
+          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 dark:text-white">
+            Encontre seu estabelecimento ideal
+          </h1>
+          <p class="text-lg text-gray-500 max-w-2xl mx-auto dark:text-slate-400">
+            Explore nossa rede de parceiros e descubra os melhores serviços de beleza e estética perto de você.
+          </p>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 mb-8 dark:bg-slate-900 dark:border-slate-800">
+          <div class="grid md:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-slate-200">Localização</label>
+              <input type="text" placeholder="Cidade ou bairro" class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#3366FF] focus:ring-2 focus:ring-[#3366FF]/15 dark:border-slate-600 dark:bg-slate-800 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-slate-200">Categoria</label>
+              <select class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#3366FF] focus:ring-2 focus:ring-[#3366FF]/15 dark:border-slate-600 dark:bg-slate-800 dark:text-white">
+                <option>Todas as categorias</option>
+                <option>Cabelo</option>
+                <option>Pele</option>
+                <option>Unhas</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-slate-200">Plano</label>
+              <select class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#3366FF] focus:ring-2 focus:ring-[#3366FF]/15 dark:border-slate-600 dark:bg-slate-800 dark:text-white">
+                <option>Todos os planos</option>
+                <option>Básico</option>
+                <option>Plus</option>
+                <option>Premium</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button class="w-full bg-[#3366FF] text-white px-4 py-2 rounded-lg hover:bg-[#2C58DB] transition-colors">
+                Buscar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTA DE ESTABELECIMENTOS -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="flex justify-between items-center mb-8">
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Encontrados <strong id="establishments-count">12 estabelecimentos</strong> na sua região
+          </p>
+          
+          <div class="flex items-center gap-3">
+            <span class="text-sm text-gray-500 dark:text-slate-400">Ordenar por:</span>
+            <select class="text-sm border border-gray-300 rounded-lg px-3 py-1 focus:border-[#3366FF] dark:border-slate-600 dark:bg-slate-800 dark:text-white">
+              <option>Mais populares</option>
+              <option>Mais próximos</option>
+              <option>Melhor avaliação</option>
+              <option>Nome A-Z</option>
+            </select>
+          </div>
+        </div>
+        
+        <div id="establishments-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Os estabelecimentos serão inseridos aqui pelo JavaScript -->
+        </div>
+
+        <!-- PAGINAÇÃO -->
+        <div class="flex justify-center mt-12">
+          <div class="flex items-center gap-2">
+            <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-800">Anterior</button>
+            <button class="px-3 py-2 text-sm bg-[#3366FF] text-white rounded-lg">1</button>
+            <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-800">2</button>
+            <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-800">3</button>
+            <span class="px-3 py-2 text-sm text-gray-500">...</span>
+            <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-800">12</button>
+            <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-800">Próximo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
